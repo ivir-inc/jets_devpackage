@@ -17,8 +17,8 @@
 package com.ivir.devpackage;
 
 public class Version {
-    private String appVersion = "3.0.1";
-    private String fomVersion = "3.0.0";
+    private String appVersion = "4.3.0";
+    private String fomVersion = "4.0.0";
 
     public String getAppVersion() {
         return appVersion;
