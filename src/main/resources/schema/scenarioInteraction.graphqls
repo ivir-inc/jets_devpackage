@@ -1,0 +1,9 @@
+
+type SelectScenarioInteraction{
+    scenarioName : String
+}
+
+input SelectScenarioInteractionInput{
+    scenarioName : String
+}
+

@@ -1,0 +1,130 @@
+type Signs {
+  itemIdentifier: ItemIdentifier
+  patientId: ID
+  ecgRhythm: EcgRhythmEnum
+  heartSound: HeartSoundEnum
+  lungSound: LungSoundEnum
+  bowelSound: BowelSoundEnum
+  pupilSize: PupilSizeEnum
+  signLocation:  BodyLocationRecord
+  confusion: Boolean
+  cough: CoughEnum
+  skinColor : SkinColorEnum
+  skinMoisture : Boolean
+  skinRash : SkinRashRecord
+  shivering: Boolean
+}
+
+input SignsInput {
+  itemIdentifier: ItemIdentifierInput
+  patientId: String
+  ecgRhythm: EcgRhythmEnum
+  heartSound: HeartSoundEnum
+  lungSound: LungSoundEnum
+  bowelSound: BowelSoundEnum
+  pupilSize: PupilSizeEnum
+  signLocation:  BodyLocationRecordInput
+  confusion: Boolean
+  cough: CoughEnum
+  skinColor : SkinColorEnum
+  skinMoisture : Boolean
+  skinRash : SkinRashRecordInput
+  shivering: Boolean
+}
+
+enum CoughEnum{
+  NOT_APPLICABLE
+  DRY
+  WET_WITH_PHLEGM
+  WET_WITH_BLOOD
+  WET_WITHOUT_PHELGM
+  COUGH_WITH_WHEEZE
+  PAROXYSMAL_COUGH
+  BARKING_COUGH
+  WHOOPING_COUGH
+  CHOKING
+}
+
+enum EcgRhythmEnum {
+  NOT_APPLICABLE
+  NORMAL_SINUS
+  FIRST_DEGREE_HEART_BLOCK
+  SECOND_DEGREE_AV_HEART_BLOCK
+  THIRD_DEGREE_HEART_BLOCK
+  SUPRAVENTRICULAR_TACHYCARDIA
+  VENTRICULAR_TACHYCARDIA
+  VENTRICULAR_FIBRILLATION
+  ATRIAL_FIBRILLATION
+  ATRIAL_FLUTTER
+  ASYSTOLE
+  PULSELESS_ELECTRICAL_ACTIVITY
+  PULSELESS_VENTRICULAR_TACHYCARDIA
+  LONG_QT
+}
+
+enum HeartSoundEnum {
+  NOT_APPLICABLE
+  NORMAL
+  MURMUR
+  AORTIC_STENOSIS_EARLY
+  AORTIC_STENOSIS_LATE
+  MITRAL_REGURGITATION
+  MITRAL_STENOSIS
+  PULMONIC_STENOSIS
+  AORTIC_INSUFFICIENCY
+  ATRIAL_SEPTAL_DEFECT
+  VENTRICULAR_SEPTAL_DEFECT
+  TRICUSPID_REGURGITATION
+  PATENT_DUCTUS_ASTERIOSUS
+  S2
+  S3
+  S4
+  PERICARDIAL_RUB
+  ABSENT
+}
+
+enum LungSoundEnum {
+  NOT_APPLICABLE
+  NORMAL
+  CRACKLES_COARSE
+  CRACKLES_FINE
+  PLEURAL_RUB
+  RHONCHI
+  STRIDOR
+  WHEEZE
+  ABSENT
+}
+
+enum BowelSoundEnum {
+  NOT_APPLICABLE
+  NORMAL
+  HYPERACTIVE_BOWELS
+  HYPOACTIVE_BOWELS
+  ABSENT
+}
+
+enum PupilSizeEnum {
+  NOT_APPLICABLE
+  NORMAL
+  DILATED
+  CONSTRICTED
+}
+
+enum SkinColorEnum{
+  NORMAL
+  PALLOR
+  FLUSH
+  CYANOTIC
+}
+
+type SkinRashRecord{
+  rashRaised : Boolean
+  rashUniform : Boolean
+  rashScab : Boolean
+}
+
+input SkinRashRecordInput{
+  rashRaised : Boolean
+  rashUniform : Boolean
+  rashScab : Boolean
+}

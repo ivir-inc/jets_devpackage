@@ -1,0 +1,14 @@
+
+type RequestLabInteraction{
+    "The unique patient associated with the requested lab."
+    patientId : String
+    "Type of lab being requested."
+    labType : String
+}
+
+input RequestLabInteractionInput{
+    "The unique patient associated with the requested lab."
+    patientId : String
+    "Type of lab being requested."
+    labType : String
+}

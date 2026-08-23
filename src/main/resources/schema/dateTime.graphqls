@@ -1,0 +1,33 @@
+type DateTime{
+    itemIdentifier: ItemIdentifier
+    """
+    Represents the seconds/milliseconds since the start of the execution.  The Start Execution interaction sets the
+    counter to zero and begins the timer while Stop Execution stops the timer from advancing.  The timer cannot be
+    advanced from a Stop Execution.  Pause stops advancing the time while resume starts advancing the timer from its
+    last value.
+    """
+    simulationElapsedTime: Long
+    "Date and time the federation is simulating e.g. 11 February, 1979 at 13:42 Zulu."
+    simulatedDateTime: Long
+    "Current 'Real' date and time as might be obtained from a system call."
+    currentDateTime: Long
+    "If null, default scale of 1:1.  Only positive integers.  X represents an X:1 scaled time advancement."
+    timeScale: Int
+}
+
+input DateTimeInput{
+    itemIdentifier: ItemIdentifierInput
+    """
+    Represents the seconds/milliseconds since the start of the execution.  The Start Execution interaction sets the
+    counter to zero and begins the timer while Stop Execution stops the timer from advancing.  The timer cannot be
+    advanced from a Stop Execution.  Pause stops advancing the time while resume starts advancing the timer from its
+    last value.
+    """
+    simulationElapsedTime: Long
+    "Date and time the federation is simulating e.g. 11 February, 1979 at 13:42 Zulu."
+    simulatedDateTime: Long
+    "Current 'Real' date and time as might be obtained from a system call."
+    currentDateTime: Long
+    "If null, default scale of 1:1.  Only positive integers.  X represents an X:1 scaled time advancement."
+    timeScale: Int
+}

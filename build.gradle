@@ -1,0 +1,101 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.3'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.ivir'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+bootRun {
+	systemProperty 'java.net.preferIPv4Stack', 'true'
+	systemProperty 'devstudio.generatedcode.settings','FederateConfig.txt'
+}
+
+configurations {
+	all {
+		// Exclude default Spring Boot logging (Logback)
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+}
+
+dependencies {
+	implementation files('lib/portico.jar')
+	implementation files('lib/pivot-core-2.0.5.jar')
+	implementation files('lib/pivot-wtk-2.0.5.jar')
+	implementation files('lib/pivot-wtk-terra-2.0.5.jar')
+	implementation files('lib/mms-rti-client-4.2.1.jar')
+
+
+	implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:7.6.0"))
+	implementation "com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:7.6.0"
+	implementation "com.netflix.graphql.dgs:graphql-dgs-subscriptions-sse-autoconfigure"
+	implementation "com.graphql-java:graphql-java:20.6"
+	implementation "com.graphql-java:graphql-java-extended-scalars:20.2"
+	implementation 'javax.annotation:javax.annotation-api:1.3.2'
+	implementation 'org.apache.logging.log4j:log4j-core'
+	implementation 'org.dizitart:nitrite:4.3.0'
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+task getDeps(type: Copy) {
+	from sourceSets.main.runtimeClasspath
+	into 'runtime/'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+clean {
+	delete "dist"
+	delete "runtime"
+	delete "zip"
+}
+
+tasks.register('packageTool', Zip) {
+
+	mkdir "dist"
+	mkdir "dist/libs"
+	copy {
+		from sourceSets.main.runtimeClasspath
+		into 'runtime/'
+	}
+	copy {
+		from "runtime"
+		include "*.jar"
+		into "dist/libs"
+	}
+	copy {
+		from "src/main/resources/federate"
+		include "*"
+		into "dist"
+	}
+	copy {
+		from "src/main/resources/scripts"
+		include "*"
+		into "dist"
+	}
+	copy {
+		from "src/main/resources"
+		include "application.properties"
+		into "dist/libs"
+	}
+	copy {
+		from "build/libs"
+		include "*plain.jar"
+		into "dist/libs"
+	}
+
+	archiveName "devpackage-${version}.zip"
+	destinationDir(file('zip'))
+	from("dist") {
+		into 'devpackage'
+	}
+}

@@ -1,0 +1,19 @@
+
+type InstructionalInteraction{
+    "Control interactions specific to instructional systems"
+    instructionalType: InstructionalTypeEnum
+    trainingFacilityId : String
+}
+
+input InstructionalInteractionInput{
+    "Control interactions specific to instructional systems"
+    instructionalType: InstructionalTypeEnum
+    trainingFacilityId : String
+}
+
+enum InstructionalTypeEnum{
+    START
+    STOP
+    PAUSE
+    RESUME
+}

@@ -1,0 +1,47 @@
+type Federate{
+    """
+    Name of the joined federate supplied to a successful Join Federation Execution service invocation
+    """
+    name : String
+    "Host name of the computer on which the joined federate is executing"
+    host : String
+    "Number of RO messages queued for delivery to the joined federate."
+    roLength : Int
+    """
+    Total number of times the Reflect Attribute Values' service has been invoked at the joined
+    federate (as opposed to the number of instance attribute value reflections that have been received
+    """
+    reflectionsReceived : Int
+    """
+    Total number of updates sent by the joined federate" in XML and "Total number of times the
+    Update Attribute Values' service has successfully been invoked by the joined federate (as opposed
+    to the number of instance attribute values that have been updated by the joined federate).
+    """
+    updatesSent : Int
+    """
+    Total number of object instances for which the joined federate has invoked the Update Attribute Values service.
+    """
+    objectInstancesUpdated : Int
+    """
+    Total number of object instances for which the joined federate has had a Reflect Attribute Values service invocation.
+    """
+    objectInstancesReflected : Int
+    """
+    Total number of times the Register Object Instance or Register Object Instance with Region service were invoked by
+    the joined federate since the federate joined the federation.
+    """
+    objectInstancesRegistered : Int
+    """
+    Total number of times the Discover Object Instance service was invoked for the joined
+    federate since the federate joined the federation.The value of the HLAobjectInstancesDiscovered
+    attribute shall include multiple invocations of the Discover Object Instance service for a given
+    object instance that may occur as a result of invocation of the Local Delete Object Instance
+    service at a federate.
+    """
+    objectInstancesDiscovered : Int
+}
+
+type Version{
+    appVersion : String
+    fomVersion : String
+}

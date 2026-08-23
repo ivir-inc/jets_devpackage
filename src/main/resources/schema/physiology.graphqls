@@ -1,0 +1,66 @@
+input PhysiologyInput{
+    itemIdentifier: ItemIdentifierInput
+    patientId: String
+    heartRate: Int
+    diastolicBloodPressure: Int
+    systolicBloodPressure: Int
+    peripheralOxygenSaturation: Float
+    temperatureFahrenheit: Float
+    respirationEndTidalCarbonDioxide: Float
+    respirationRate: Float
+    lungTidalVolume: Int
+    lungDeadSpace: Int
+    lungTotalCapacity: Int
+    lungExpiratoryReserve: Int
+    lungInspiratoryReserve: Int
+    lungResidualVolume: Int
+}
+
+"This is for physiology."
+type Physiology {
+    itemIdentifier: ItemIdentifier
+    "Name of the patient"
+  patientId: String
+    @deprecated(reason: "Use VitalSigns.patientId for v3 schema")
+    "Beats per minute"
+  heartRate: Int @deprecated(reason: "Use VitalSigns.heartRate for v3 schema")
+  "mm Hg expressed as an integer"
+    diastolicBloodPressure: Int
+    @deprecated(reason: "Use VitalSigns.diastolicBloodPressure for v3 schema")
+    systolicBloodPressure: Int
+    @deprecated(reason: "Use VitalSigns.systolicBloodPressure for v3 schema")
+    peripheralOxygenSaturation: Float
+    @deprecated(
+      reason: "Use VitalSigns.peripheralOxygenSaturation for v3 schema"
+    )
+    temperatureFahrenheit: Float
+    @deprecated(reason: "Use VitalSigns.temperatureFahrenheit for v3 schema")
+    respirationEndTidalCarbonDioxide: Float
+    @deprecated(
+      reason: "Use VitalSigns.respirationEndTidalCarbonDioxide for v3 schema"
+    )
+    respirationRate: Float
+    @deprecated(reason: "Use VitalSigns.respirationRate for v3 schema")
+    lungTidalVolume: Int
+    @deprecated(
+      reason: "Use RespiratoryPhysiology.lungTidalVolume for v3 schema"
+    )
+    lungDeadSpace: Int
+    @deprecated(reason: "Use RespiratoryPhysiology.lungDeadSpace for v3 schema")
+    lungTotalCapacity: Int
+    @deprecated(
+      reason: "Use RespiratoryPhysiology.lungTotalCapacity for v3 schema"
+    )
+    lungExpiratoryReserve: Int
+    @deprecated(
+      reason: "Use RespiratoryPhysiology.lungExpiratoryReserve for v3 schema"
+    )
+    lungInspiratoryReserve: Int
+    @deprecated(
+      reason: "Use RespiratoryPhysiology.lungInspiratoryReserve for v3 schema"
+    )
+    lungResidualVolume: Int
+    @deprecated(
+      reason: "Use RespiratoryPhysiology.lungResidualVolume for v3 schema"
+    )
+}

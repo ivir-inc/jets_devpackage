@@ -1,0 +1,53 @@
+type MagicVitalsInteraction{
+    patientId: String
+    vitalsType: MagicVitalsEnum
+    value: Float
+}
+
+input MagicVitalsInteractionInput{
+    patientId: String!
+    vitalsType: MagicVitalsEnum!
+    value: Float!
+}
+
+type MagicTransferInteraction{
+    patientId: String
+    facilityId: String
+    receivedAt: String
+}
+
+input MagicTransferInteractionInput{
+    patientId: String!
+    facilityId: String!
+}
+
+type VitalsDisplayControlInteraction{
+    patientId: String
+    visibleVitalSign: VisibleVitalSignEnum
+    visibility: Boolean
+}
+
+input VitalsDisplayControlInteractionInput{
+    patientId: String!
+    visibleVitalSign: VisibleVitalSignEnum!
+    visibility: Boolean!
+}
+
+enum MagicVitalsEnum{
+    HEART_RATE
+    DIASTOLIC_BLOOD_PRESSURE
+    SYSTOLIC_BLOOD_PRESSURE
+    PERIPHERAL_OXYGEN_SATURATION
+    TEMPERATURE_FAHRENHEIT
+    RESPIRATION_END_TIDAL_CARBON_DIOXIDE
+    RESPIRATION_RATE
+}
+
+enum VisibleVitalSignEnum{
+    HEART_RATE
+    BLOOD_PRESSURE
+    OXYGEN_SATURATION
+    TEMPERATURE
+    END_TIDAL_CARBON_DIOXIDE
+    RESPIRATION_RATE
+}

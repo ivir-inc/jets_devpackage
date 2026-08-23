@@ -1,0 +1,342 @@
+type TacticalCombatCasualtyCareCard {
+  itemIdentifier: ItemIdentifier
+  "patientId uniquely identifies a patient."
+  patientId: String
+  """
+  Record first letter of patient's first name, then first letter of patient's last name, then record the last four
+  numbers of patient's Social Security number. For example, John Doe 123-12-1234 is Battle Roster # 'JD1234'.
+  """
+  battleRosterNumber: String
+  "Urgent, Priority, Routine level of evac request."
+  evacuationLevelRequest: EvacuationCategoryEnum
+  "Last name of patient."
+  lastName: String
+  "First name of patient."
+  firstName: String
+  "Some instructions call for full SSAN, others last 4. Some injured personnel may not have a SSAN."
+  socialSecurityAccountNumber: String
+  "Gender of patient."
+  gender: GenderEnum
+  "Write date of injury in DD-MMM-YY format. For example, 29-JUN-22."
+  date: String
+  "Write 24-hour time of injury, and indicate whether local (L) or zulu (Z) time. For example, 1300Z."
+  time: String
+  "String describing the service branch."
+  service: String
+  "Unit the patient is attached to. Leave blank if unknown or N/A."
+  unit: String
+  "String containing allergies if known. Multiple allergies should be separated by a comma."
+  allergies: String
+  "Mechanism of injury details."
+  mechanismOfInjury: MechanismOfInjuryRecord
+  "Injury section of the DD1380."
+  injuryAnnotation: InjuryAnnotationRecord
+  """
+  Signs and symptoms of the patient as determined and recorded by the learner.
+  """
+  signsSymptoms: [SignsSymptomsRecord]
+  """
+  Circulation hemorrhage control interventions. Includes tourniquet and dressing details.
+  """
+  treatmentCirculatoryTourniquet: TreatmentCirculatoryTourniquetRecord
+  treatmentCirculatoryDressing: TreatmentCirculatoryDressingRecord
+  """
+  Airway interventions and devices used.
+  """
+  treatmentAirway: TreatmentAirwayRecord
+  """
+  Breathing interventions and devices used.
+  """
+  treatmentBreathing: TreatmentBreathingRecord
+  "Fluids given for circulation resuscitation."
+  treatmentFluids: [TreatmentFluidRecord]
+  "Blood products given for circulation resuscitation."
+  treatmentBloodProducts: [TreatmentFluidRecord]
+  "Analgesics administered, including name, dose, and route."
+  treatmentMedicationsAnalgesic: [TreatmentMedicationsRecord]
+  "Antibiotics administered, including name, dose, and route."
+  treatmentMedicationsAntibiotic: [TreatmentMedicationsRecord]
+  "Other medications administered."
+  treatmentMedicationsOther: [TreatmentMedicationsRecord]
+  """
+  Other treatments administered (e.g., combat pill pack, eye shield, splint).
+  """
+  treatmentOther: TreatmentOtherRecord
+  "Any other pertinent information or clarifications."
+  treatmentNotes: String
+  "Information about the first responder providing care."
+  responder: ResponderRecord
+}
+
+input TacticalCombatCasualtyCareCardInput {
+  itemIdentifier: ItemIdentifierInput
+  "patientId uniquely identifies a patient."
+  patientId: String
+  """
+  Record first letter of patient's first name, then first letter of patient's last name, then record the last four
+  numbers of patient's Social Security number. For example, John Doe 123-12-1234 is Battle Roster # 'JD1234'.
+  """
+  battleRosterNumber: String
+  "Urgent, Priority, Routine level of evac request."
+  evacuationLevelRequest: EvacuationCategoryEnum
+  "Last name of patient"
+  lastName: String
+  "first name of patient"
+  firstName: String
+  "Some 1380 instructions call for full ssan, others last 4. Also, some injured personnel may not have a SSAN."
+  socialSecurityAccountNumber: String
+  "Gender of patient"
+  gender: GenderEnum
+  "Write date of injury in DD-MMM-YY format. For example, 29-JUN-22."
+  date: String
+  "Write 24 hour time of injury, and indicate whether local (L) or zulu (Z) time. For example, 1300Z."
+  time: String
+  "String describing the service branch."
+  service: String
+  "Unit the patient is attached to. Leave blank if unknown or N/A"
+  unit: String
+  "String containing allergies if known. Multiple allergies should be separated by a comma"
+  allergies: String
+  "Check all mechanisms of injury that apply."
+  mechanismOfInjury: MechanismOfInjuryRecordInput
+  "Injury section of the DD1380."
+  injuryAnnotation: InjuryAnnotationRecordInput
+  """
+  Signs and symptoms of the patient. These are the 'perceived' signs and symptoms as determined
+  and recorded by the learner.
+  """
+  signsSymptoms: [SignsSymptomsRecordInput]
+  """
+  Mark an 'x' for all Circulation hemorrhage control interventions. For tourniquets (TQ), mark category (Extremity,
+  Junctional and/or Truncal) and write name of TQ(s) used.  For dressings, mark category (Hemostatic, Pressure,
+  and/or Other) and write type of dressing(s) used.
+  """
+  treatmentCirculatoryTourniquet: TreatmentCirculatoryTourniquetRecordInput
+  "For dressings, mark category (Hemostatic, Pressure, and/or Other) and write type of dressing(s) used."
+  treatmentCirculatoryDressing: TreatmentCirculatoryDressingRecordInput
+  """
+  Mark an 'X' for all Airway interventions (Intact, NPA (nasopharyngeal airway), CRIC (cricothyroidotomy), ET Tube
+  (endotracheal tube), SGA (supraglottic airway) and write type of device(s) used.
+  """
+  treatmentAirway: TreatmentAirwayRecordInput
+  """
+  Mark an 'X' for all Breathing interventions (O2 (oxygen), Needle-D (needle decompression), Chest-Tube, Chest-Seal)
+  and write type of device(s) used.
+  """
+  treatmentBreathing: TreatmentBreathingRecordInput
+  "Circulation resuscitation interventions. Write name, volume, route, and time of any fluids given."
+  treatmentFluids: [TreatmentFluidRecordInput]
+  "Circulation resuscitation interventions. Write name, volume, route, and time of any blood products given."
+  treatmentBloodProducts: [TreatmentFluidRecordInput]
+  "Write name, dose, route, and time of any analgesics given."
+  treatmentMedicationsAnalgesic: [TreatmentMedicationsRecordInput]
+  "Medications. Write name, dose, route, and time of any antibiotics given."
+  treatmentMedicationsAntibiotic: [TreatmentMedicationsRecordInput]
+  "Medications. Write name, dose, route, and time of any other administered medications."
+  treatmentMedicationsOther: [TreatmentMedicationsRecordInput]
+  """
+  Mark an 'X' for other treatments administered (combat pill pack, eye shield (mark right (R) or left (L)), splint,
+  hypothermia prevention) and type of device(s) used.
+  """
+  treatmentOther: TreatmentOtherRecordInput
+  "Use this space to record any other pertinent information and/or clarifications."
+  treatmentNotes: String
+  "Information about the first responder providing the care"
+  responder: ResponderRecordInput
+}
+
+enum EvacuationCategoryEnum {
+  URGENT
+  PRIORITY
+  ROUTINE
+}
+
+enum GenderEnum {
+  UNKNOWN
+  MALE
+  FEMALE
+}
+
+type InjuryAnnotationRecord {
+  rightArmTourniquet: TourniquetRecord
+  leftArmTourniquet: TourniquetRecord
+  rightLegTourniquet: TourniquetRecord
+  leftLegTourniquet: TourniquetRecord
+  annotationList: [InjuryLocationRecord]
+}
+
+input InjuryAnnotationRecordInput {
+  rightArmTourniquet: TourniquetRecordInput
+  leftArmTourniquet: TourniquetRecordInput
+  rightLegTourniquet: TourniquetRecordInput
+  leftLegTourniquet: TourniquetRecordInput
+  annotationList: [InjuryLocationRecordInput]
+}
+
+type TourniquetRecord {
+  type: String
+  time: String
+}
+
+input TourniquetRecordInput {
+  type: String
+  time: String
+}
+
+type InjuryLocationRecord {
+  injuryType: Injury
+  injuryLocation: [BodyLocationCoarseEnum]
+}
+
+input InjuryLocationRecordInput {
+  injuryType: InjuryInput
+  injuryLocation: [BodyLocationCoarseEnum]
+}
+
+type SignsSymptomsRecord {
+  time: String
+  pulse: String
+  systolicBloodPressure: Int
+  diastolicBloodPressure: Int
+  respiratoryRate: Int
+  pulseOxO2Ssaturation: Int
+  alertnessLevel: Byte
+  painScale: Int
+}
+
+input SignsSymptomsRecordInput {
+  time: String
+  pulse: String
+  systolicBloodPressure: Int
+  diastolicBloodPressure: Int
+  respiratoryRate: Int
+  pulseOxO2Ssaturation: Int
+  alertnessLevel: Byte
+  painScale: Int
+}
+
+type TreatmentCirculatoryTourniquetRecord {
+  extremity: Boolean
+  extremityType: String
+  junctional: Boolean
+  junctionalType: String
+  truncal: Boolean
+  truncalType: String
+}
+
+input TreatmentCirculatoryTourniquetRecordInput {
+  extremity: Boolean
+  extremityType: String
+  junctional: Boolean
+  junctionalType: String
+  truncal: Boolean
+  truncalType: String
+}
+
+type TreatmentCirculatoryDressingRecord {
+  hemostatic: Boolean
+  pressure: Boolean
+  other: Boolean
+  otherType: String
+}
+
+input TreatmentCirculatoryDressingRecordInput {
+  hemostatic: Boolean
+  pressure: Boolean
+  other: Boolean
+  otherType: String
+}
+
+type TreatmentAirwayRecord {
+  intact: Boolean
+  nasopharyngealAirway: Boolean
+  cricothyroidotomy: Boolean
+  endotrachealTube: Boolean
+  supraglotticAirway: Boolean
+  type: String
+}
+
+input TreatmentAirwayRecordInput {
+  intact: Boolean
+  nasopharyngealAirway: Boolean
+  cricothyroidotomy: Boolean
+  endotrachealTube: Boolean
+  supraglotticAirway: Boolean
+  type: String
+}
+
+type TreatmentBreathingRecord {
+  oxygenAdministered: Boolean
+  needleDecompression: Boolean
+  chestTube: Boolean
+  chestSeal: Boolean
+  type: String
+}
+
+input TreatmentBreathingRecordInput {
+  oxygenAdministered: Boolean
+  needleDecompression: Boolean
+  chestTube: Boolean
+  chestSeal: Boolean
+  type: String
+}
+
+type TreatmentFluidRecord {
+  name: String
+  volume: Int
+  route: String
+  time: String
+}
+
+input TreatmentFluidRecordInput {
+  name: String
+  volume: Int
+  route: String
+  time: String
+}
+
+type TreatmentMedicationsRecord {
+  name: String
+  dosage: String
+  route: String
+  time: String
+}
+
+input TreatmentMedicationsRecordInput {
+  name: String
+  dosage: String
+  route: String
+  time: String
+}
+
+type TreatmentOtherRecord {
+  combatPill: Boolean
+  hypothermiaBlanket: Boolean
+  eyeShieldRight: Boolean
+  eyeShieldLeft: Boolean
+  splint: Boolean
+  type: String
+}
+
+input TreatmentOtherRecordInput {
+  combatPill: Boolean
+  hypothermiaBlanket: Boolean
+  eyeShieldRight: Boolean
+  eyeShieldLeft: Boolean
+  splint: Boolean
+  type: String
+}
+
+type ResponderRecord {
+  lastName: String
+  firstName: String
+  trainingLevel: String
+  socialSecurityAccountNumber: String
+}
+
+input ResponderRecordInput {
+  lastName: String
+  firstName: String
+  trainingLevel: String
+  socialSecurityAccountNumber: String
+}

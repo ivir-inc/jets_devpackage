@@ -1,0 +1,261 @@
+scalar Long
+scalar Char
+scalar Byte
+
+type Query {
+    bloodGasLabAll: [BloodGasLab]
+    bloodGasLabById(itemId: Int): BloodGasLab
+    bloodLabAll: [BloodLab]
+    bloodLabById(itemId: Int): BloodLab
+    bodyFluidsAll: [BodyFluids]
+    bodyFluidsById(itemId: Int): BodyFluids
+    casualtyStateAll: [CasualtyState]
+    casualtyStateById(itemId: Int): CasualtyState
+    connectionStatus: String
+    createPatientAll: [CreatePatient]
+    createPatientById(itemId: Int): CreatePatient
+    dataLogAll: [DataLog]
+    dataLogById(itemId: Int): DataLog
+    dateTimeAll: [DateTime]
+    dateTimeById(itemId: Int): DateTime
+    documentAll: [Document]
+    documentById(itemId: Int): Document
+    eventAll: [Event]
+    eventById(itemId: Int): Event
+    eventByPatientId(patientId: String): [Event]
+    facilityAll: [Facility]
+    facilityById(itemId: Int): Facility
+    federateAll: [Federate]
+    federateDataAll: [FederateData]
+    federateDataById(itemId: Int): FederateData
+    federationStateAll: [FederationState]
+    federationStateById(itemId: Int): FederationState
+    injuryAll: [Injury]
+    injuryById(itemId: Int): Injury
+    magicTransferInteractionAll: [MagicTransferInteraction]
+    medicationTreatmentAll: [MedicationTreatment]
+    medicationTreatmentById(itemId: Int): MedicationTreatment
+    medicationTreatmentByPatientId(patientId: String): [MedicationTreatment]
+    neurologicalScalesAll: [NeurologicalScales]
+    neurologicalScalesById(itemId: Int): NeurologicalScales
+    physicalTreatmentAll: [PhysicalTreatment]
+    physicalTreatmentById(itemId: Int): PhysicalTreatment
+    physicalTreatmentByPatientId(patientId: String): [PhysicalTreatment]
+    physiologyAll: [Physiology]
+    physiologyById(itemId: Int): Physiology
+    respiratoryPhysiologyAll: [RespiratoryPhysiology] # Only RespiratoryPhysiology data (subset of Physiology)
+    respiratoryPhysiologyById(itemId: Int): RespiratoryPhysiology # Query RespiratoryPhysiology by ID
+    respiratoryPhysiologyByPatientId(patientId: String): RespiratoryPhysiology # Fetch RespiratoryPhysiology by patientId
+    signsAll: [Signs]
+    signsById(itemId: Int): Signs
+    symptomsAll: [Symptoms]
+    symptomsById(itemId: Int): Symptoms
+    tacticalCombatCasualtyCareCardAll: [TacticalCombatCasualtyCareCard]
+    tacticalCombatCasualtyCareCardById(itemId: Int): TacticalCombatCasualtyCareCard
+    treatmentAll: [Treatment] @deprecated(reason: "Use medicationTreatment or physicalTreatment instead")
+    treatmentById(itemId: Int): Treatment  @deprecated(reason: "Use medicationTreatment or physicalTreatment instead")
+    treatmentByPatientId(patientId: String): [Treatment]  @deprecated(reason: "Use medicationTreatment or physicalTreatment instead")
+    urineLabAll: [UrineLab]
+    urineLabById(itemId: Int): UrineLab
+    vitalSignsAll: [VitalSigns] # Only VitalSigns data (subset of Physiology)
+    vitalSignsById(itemId: Int): VitalSigns # Query VitalSigns by ID
+    vitalSignsByPatientId(patientId: String): VitalSigns # Fetch VitalSigns by patientId
+    version: Version
+}
+
+type Subscription {
+    # Monitor the updated physiology, vital signs, and respiratory physiology
+    monitorControlInteraction : ControlInteraction
+    monitorBloodGasLab: BloodGasLab
+    monitorBloodLab: BloodLab
+    monitorBodyFluids: BodyFluids
+    monitorCasualtyState: CasualtyState
+    monitorCreatePatient: CreatePatient
+    monitorDataLog: DataLog
+    monitorDateTime: DateTime
+    monitorDocument: Document
+    monitorEvent: Event
+    monitorFacility: Facility
+    monitorFederateData: FederateData
+    monitorFederationState: FederationState
+    monitorInjury: Injury
+    monitorInstructionalInteraction: InstructionalInteraction
+    monitorMagicTransferInteraction: MagicTransferInteraction
+    monitorMagicVitalsInteraction: MagicVitalsInteraction
+    monitorMedicalEvacuationInteraction: MedicalEvacuationInteraction
+    monitorMedicationTreatment: MedicationTreatment
+    monitorNeurologicalScales: NeurologicalScales
+    monitorPatientInteraction: PatientInteraction
+    monitorPhysicalTreatment: PhysicalTreatment
+    monitorPhysiology: Physiology # Monitor full physiology (v2)
+    monitorRespiratoryPhysiology: RespiratoryPhysiology # Monitor RespiratoryPhysiology only (v3)
+    monitorRestInteraction: RestInteraction
+    monitorRequestLabInteraction: RequestLabInteraction
+    monitorSelectScenarioInteraction: SelectScenarioInteraction
+    monitorSigns: Signs
+    monitorSymptoms: Symptoms
+    monitorTacticalCombatCasualtyCareCard: TacticalCombatCasualtyCareCard
+    monitorTcccInteraction: TcccInteraction
+    monitorTreatment: Treatment
+    monitorUrineLab: UrineLab
+    monitorVitalSigns: VitalSigns # Monitor VitalSigns only (v38)
+    monitorVitalsDisplayControlInteraction: VitalsDisplayControlInteraction
+}
+
+type Mutation {
+    bloodGasLabUpdate(bloodGasLab: BloodGasLabInput) : String
+    bloodLabUpdate(bloodLab: BloodLabInput) : String
+    bodyFluidsUpdate(bodyFluids: BodyFluidsInput) : String
+    casualtyStateUpdate(casualtyState: CasualtyStateInput) : String
+    createPatientUpdate(createPatient: CreatePatientInput) : String
+    dataLogUpdate(dataLog: DataLogInput) : String
+    dateTimeUpdate(dateTime: DateTimeInput) : String
+    documentUpdate(document: DocumentInput) : String
+    eventUpdate(event: EventInput) : String
+    facilityUpdate(facility: FacilityInput) : String
+    federateDataUpdate(federateData: FederateDataInput) : String
+    federationStateUpdate(federationState: FederationStateInput) : String
+    injuryUpdate(injury: InjuryInput) : String
+    "Join the federation"
+    joinFederation(
+        "Name to give this federate. It must be unique from the other federates in the federation"
+        federateName: String):String
+    # v2 Compatibility: Update full physiology (VitalSigns + RespiratoryPhysiology)
+    medicationTreatmentUpdate(
+        medicationTreatment: MedicationTreatmentInput
+    ): String
+    neurologicalScalesUpdate(neurologicalScales: NeurologicalScalesInput) : String
+    physicalTreatmentUpdate(physicalTreatment: PhysicalTreatmentInput) : String
+    physiologyUpdate(physiology: PhysiologyInput): String # Full physiology update (v2)
+    "Resign from the federation"
+    resignFromFederation:String
+    # New mutations for v3
+    respiratoryPhysiologyUpdate(
+        respiratoryPhysiology: RespiratoryPhysiologyInput
+    ): String # Update RespiratoryPhysiology
+    sendControlInteraction(controlType: ControlTypeEnum!, label: String) : String
+    sendInstructionalInteraction(
+        instructionalInteraction: InstructionalInteractionInput
+    ): String
+    sendMagicTransferInteraction(
+        magicTransferInteraction: MagicTransferInteractionInput
+    ): String
+    sendMagicVitalsInteraction(
+        magicVitalsInteraction: MagicVitalsInteractionInput
+    ): String
+    sendMedicalEvacuationInteraction(
+        medicalEvacuationInteraction: MedicalEvacuationInteractionInput
+    ): String
+    sendPatientInteraction(patientInteraction: PatientInteractionInput) : String
+    sendRequestLabInteraction(
+        requestLabInteraction: RequestLabInteractionInput
+    ): String
+    sendRestInteraction(restInteraction: RestInteractionInput) : String
+    sendSelectScenarioInteraction(
+        selectScenarioInteraction: SelectScenarioInteractionInput
+    ): String
+    sendTcccInteraction(tcccInteraction: TcccInteractionInput) : String
+    sendVitalsDisplayControlInteraction(
+        vitalsDisplayControlInteraction: VitalsDisplayControlInteractionInput
+    ): String
+    signsUpdate(signs: SignsInput): String
+    symptomsUpdate(symptoms: SymptomsInput): String
+    tacticalCombatCasualtyCareCardUpdate(
+        tacticalCombatCasualtyCareCard: TacticalCombatCasualtyCareCardInput
+    ): String
+    treatmentUpdate(treatment: TreatmentInput) : String
+    urineLabUpdate(urineLab: UrineLabInput) : String
+    vitalSignsAcquire(instanceName: String) : String
+    vitalSignsRelease(instanceName: String) : String
+    vitalSignsUpdate(vitalSigns: VitalSignsInput): String # Update VitalSigns
+}
+
+type ItemIdentifier{
+    itemId: Int
+    instanceName: String
+    isOwner: Boolean
+}
+
+input ItemIdentifierInput{
+    itemId: Int
+    instanceName: String
+    isOwner: Boolean
+}
+
+enum OwnershipStateEnum{
+    UNKNOWN,
+    CREATED,
+    DISCOVERED,
+    RELEASE_OWNERSHIP_REQUESTED,
+    OWNERSHIP_RELEASED,
+    OWNERSHIP_ACQUIRED,
+    OWNERSHIP_OFFERED,
+    ATTRIBUTE_OWNERSHIP_DENIED,
+    CANCEL_ACQUIRE_OWNERSHIP_SUCCEEDED
+}
+
+enum BodyLocationCoarseEnum{
+    ANTERIOR_ABDOMEN_LEFT_LOWER_QUADRANT
+    ANTERIOR_ABDOMEN_LEFT_UPPER_QUADRANT
+    ANTERIOR_ABDOMEN_RIGHT_LOWER_QUADRANT
+    ANTERIOR_ABDOMEN_RIGHT_UPPER_QUADRANT
+    ANTERIOR_GENITALS
+    ANTERIOR_HEAD_FACE
+    ANTERIOR_LEFT_ANKLE_FOOT
+    ANTERIOR_LEFT_FORE_ARM
+    ANTERIOR_LEFT_KNEE
+    ANTERIOR_LEFT_LATERAL_HEAD_FACE
+    ANTERIOR_LEFT_LOWER_LEG
+    ANTERIOR_LEFT_LOWER_THORAX
+    ANTERIOR_LEFT_PELVIS
+    ANTERIOR_LEFT_SHOULDER
+    ANTERIOR_LEFT_THIGH
+    ANTERIOR_LEFT_UPPER_ARM
+    ANTERIOR_LEFT_UPPER_THORAX
+    ANTERIOR_LEFT_WRIST_HAND
+    ANTERIOR_NECK
+    ANTERIOR_RIGHT_ANKLE_FOOT
+    ANTERIOR_RIGHT_FORE_ARM
+    ANTERIOR_RIGHT_KNEE
+    ANTERIOR_RIGHT_LATERAL_HEAD_FACE
+    ANTERIOR_RIGHT_LOWER_LEG
+    ANTERIOR_RIGHT_LOWER_THORAX
+    ANTERIOR_RIGHT_PELVIS
+    ANTERIOR_RIGHT_SHOULDER
+    ANTERIOR_RIGHT_THIGH
+    ANTERIOR_RIGHT_UPPER_ARM
+    ANTERIOR_RIGHT_UPPER_THORAX
+    ANTERIOR_RIGHT_WRIST_HAND
+    ANTERIOR_STERNUM
+    NOT_APPLICABLE
+    POSTERIOR_HEAD
+    POSTERIOR_LEFT_ANKLE_FOOT
+    POSTERIOR_LEFT_BUTTOCKS
+    POSTERIOR_LEFT_FLANK
+    POSTERIOR_LEFT_FORE_ARM
+    POSTERIOR_LEFT_KNEE
+    POSTERIOR_LEFT_LOWER_LEG
+    POSTERIOR_LEFT_LOWER_THORAX
+    POSTERIOR_LEFT_SHOULDER
+    POSTERIOR_LEFT_THIGH
+    POSTERIOR_LEFT_UPPER_ARM
+    POSTERIOR_LEFT_UPPER_THORAX
+    POSTERIOR_LEFT_WRIST_HAND
+    POSTERIOR_LOWER_LUMBAR_COCCYX_SPINE
+    POSTERIOR_MIDDLE_THORACIC_SPINE
+    POSTERIOR_NECK
+    POSTERIOR_RIGHT_ANKLE_FOOT
+    POSTERIOR_RIGHT_BUTTOCKS
+    POSTERIOR_RIGHT_FLANK
+    POSTERIOR_RIGHT_FORE_ARM
+    POSTERIOR_RIGHT_KNEE
+    POSTERIOR_RIGHT_LOWER_LEG
+    POSTERIOR_RIGHT_LOWER_THORAX
+    POSTERIOR_RIGHT_SHOULDER
+    POSTERIOR_RIGHT_THIGH
+    POSTERIOR_RIGHT_UPPER_ARM
+    POSTERIOR_RIGHT_UPPER_THORAX
+    POSTERIOR_RIGHT_WRIST_HAND
+    POSTERIOR_UPPER_CERVICAL_SPINE
+}
+

@@ -1,0 +1,35 @@
+type Symptoms {
+  itemIdentifier: ItemIdentifier
+  patientId: ID
+  dizziness: Boolean
+  fatigue : Boolean
+  levelOfPain : Int
+  nausea : Boolean
+  numbness : Boolean
+  symptomLocation:  BodyLocationRecord
+  visionDisturbance : VisionDisturbanceEnum
+}
+
+input SymptomsInput {
+  itemIdentifier: ItemIdentifierInput
+  patientId: String
+  dizziness: Boolean
+  fatigue : Boolean
+  levelOfPain : Int
+  nausea : Boolean
+  numbness : Boolean
+  symptomLocation:  BodyLocationRecordInput
+  visionDisturbance : VisionDisturbanceEnum
+}
+
+enum VisionDisturbanceEnum{
+  NOT_APPLICABLE
+  DISTANCE_BLURRED
+  NEAR_BLURRED
+  DIPLOPIA_VERTICAL
+  DIPLOPIA_HORIZONTAL
+  HALOS
+  BLINDNESS_PARTIAL
+  BLINDNESS_TOTAL
+  TUNNEL_VISION
+}

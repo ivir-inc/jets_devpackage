@@ -1,0 +1,108 @@
+type UrineLab{
+    itemIdentifier: ItemIdentifier
+    "Measured in umol/L"
+    urobilinogen: Float
+    "Measured in mmol/L"
+    urineGlucose: Float
+    "Measured in milligrams per deciliter (mg/dL)"
+    bilirubin: Float
+    "Measured in mmol/L"
+    ketones: Float @deprecated(reason: "ketones moved to urineKetones as of v2 of the FOM")
+    "Measured in mmol/L"
+    urineKetones: Float
+    "Unitless."
+    specificGravity: Float
+    "measured in RBC/uL (Red Blood cells per micro liter)"
+    bloodInUrine: Int
+    """
+    Related to reading bloodInUrine;
+    True - blood cells are hemolyzed (damaged);
+    False - blood cells are whole (undamaged)
+    """
+    hemolysis: Boolean
+    "Unitless"
+    urinePh: Float
+    "Measured in g/L."
+    protein: Float
+    "Measured in mg/dL"
+    nitrite: Float
+    "measured in WBC/uL (White Blood cells per micro liter)"
+    leukocytes: Int
+    "Measured in mmol/L."
+    ascorbicAcid: Float
+    "Measured in mEq/L."
+    urineSodium: Float
+    "Measured in mEq/L."
+    urineChloride: Float
+    "Measured in mg/dL"
+    urineCreatinine: Float
+    "Measured in mEq/L"
+    urineBicarbonate: Float
+    "Measured in mcg/d"
+    ammonia: Float
+    "Measured in mg/dL"
+    urinePhosphate: Float
+    "Measured in grams per 24 hours"
+    urineUreaNitrogen: Float
+    """ patientId uniquely identifies a patient.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution."""
+    patientId: String
+    "Simulation time that the lab was taken."
+    Time: Long
+}
+
+input UrineLabInput{
+    itemIdentifier: ItemIdentifierInput
+    "Measured in umol/L"
+    urobilinogen: Float
+    "Measured in mmol/L"
+    urineGlucose: Float
+    "Measured in milligrams per deciliter (mg/dL)"
+    bilirubin: Float
+    """
+    Measured in mmol/L
+    **Deprecated** - ketones moved to urineKetones as of v2 of the FOM
+    """
+    ketones: Float
+    "Measured in mmol/L"
+    urineKetones: Float
+    "Unitless."
+    specificGravity: Float
+    "measured in RBC/uL (Red Blood cells per micro liter)"
+    bloodInUrine: Int
+    """
+    Related to reading bloodInUrine;
+    True - blood cells are hemolyzed (damaged);
+    False - blood cells are whole (undamaged)
+    """
+    hemolysis: Boolean
+    "Unitless"
+    urinePh: Float
+    "Measured in g/L."
+    protein: Float
+    "Measured in mg/dL"
+    nitrite: Float
+    "measured in WBC/uL (White Blood cells per micro liter)"
+    leukocytes: Int
+    "Measured in mmol/L."
+    ascorbicAcid: Float
+    "Measured in mEq/L."
+    urineSodium: Float
+    "Measured in mEq/L."
+    urineChloride: Float
+    "Measured in mg/dL"
+    urineCreatinine: Float
+    "Measured in mEq/L"
+    urineBicarbonate: Float
+    "Measured in mcg/d"
+    ammonia: Float
+    "Measured in mg/dL"
+    urinePhosphate: Float
+    "Measured in grams per 24 hours"
+    urineUreaNitrogen: Float
+    """ patientId uniquely identifies a patient.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution."""
+    patientId: String
+    "Simulation time that the lab was taken."
+    Time: Long
+}

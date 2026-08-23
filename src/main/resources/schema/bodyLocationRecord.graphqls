@@ -1,0 +1,134 @@
+type BodyLocationRecord {
+  generalRegion: GeneralRegionEnum
+  regionTissueType: RegionTissueTypeEnum
+  internalAnatomy: InternalAnatomyEnum
+  sagittalPlane: SagittalPlaneEnum
+  transversePlane: TransversePlaneEnum
+  coronalPlane: CoronalPlaneEnum
+  skeletalSystem: SkeletalSystemEnum
+  detailedAnatomy: DetailedAnatomyEnum
+  fmaid: Int # Optional FMA ID for precise referencing
+}
+
+input BodyLocationRecordInput {
+  generalRegion: GeneralRegionEnum
+  regionTissueType: RegionTissueTypeEnum
+  internalAnatomy: InternalAnatomyEnum
+  sagittalPlane: SagittalPlaneEnum
+  transversePlane: TransversePlaneEnum
+  coronalPlane: CoronalPlaneEnum
+  skeletalSystem: SkeletalSystemEnum
+  detailedAnatomy: DetailedAnatomyEnum
+  fmaid: Int # Optional FMA ID for precise referencing
+}
+
+enum GeneralRegionEnum {
+  NOT_APPLICABLE
+  HEAD
+  FACE
+  NECK
+  THORAX
+  ABDOMEN
+  PELVIS
+  GENITALIA_MALE
+  GENITALIA_FEMALE
+  SHOULDER
+  UPPER_ARM
+  ELBOW
+  FOREARM
+  WRIST
+  HAND
+  FINGERS
+  HIP
+  THIGH
+  KNEE
+  LOWER_LEG
+  ANKLE
+  FOOT
+  TOES
+}
+
+enum RegionTissueTypeEnum {
+  NOT_APPLICABLE
+  SKIN
+  MUSCULATURE
+  SKELETAL_STRUCTURE
+  NEURAL_NETWORK
+  VASCULATURE
+}
+
+enum InternalAnatomyEnum {
+  NOT_APPLICABLE
+  BRAIN
+  EYES
+  HEART
+  LUNG
+  PLEURAL_CAVITY
+  REPRODUCTIVE_ORGAN_MALE
+  REPRODUCTIVE_ORGAN_FEMALE
+  STOMACH
+  ABDOMINAL_CAVITY
+  SMALL_INTESTINE
+  LARGE_INTESTINE
+  LIVER
+  SPLEEN
+}
+
+enum SagittalPlaneEnum {
+  NOT_APPLICABLE
+  LEFT
+  RIGHT
+}
+
+enum TransversePlaneEnum {
+  NOT_APPLICABLE
+  UPPER
+  LOWER
+}
+
+enum CoronalPlaneEnum {
+  NOT_APPLICABLE
+  ANTERIOR
+  POSTERIOR
+}
+
+enum SkeletalSystemEnum {
+  NOT_APPLICABLE
+  SKULL
+  SPINE
+  STERNUM
+  RIBS
+  CLAVICLE
+  SCAPULA
+  HUMERUS
+  RADIUS
+  ULNA
+  CARPALS
+  METACARPALS
+  PHALANGES_HAND
+  PELVIS
+  ILIUM
+  FEMUR
+  PATELLA
+  TIBIA
+  FIBULA
+  TARSALS
+  METATARSALS
+  PHALANGES_FOOT
+}
+
+enum DetailedAnatomyEnum {
+  NOT_APPLICABLE
+  INFRAMAMMARY_PART_OF_CHEST
+  SPACE_OF_FIRST_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_SECOND_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_THIRD_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_FOURTH_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_FIFTH_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_SIXTH_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_SEVENTH_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_EIGHTH_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_NINTH_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_TENTH_INTERCOSTAL_COMPARTMENT
+  SPACE_OF_ELEVENTH_INTERCOSTAL_COMPARTMENT
+}

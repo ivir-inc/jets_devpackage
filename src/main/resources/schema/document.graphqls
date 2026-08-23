@@ -1,0 +1,38 @@
+type Document{
+    itemIdentifier: ItemIdentifier
+    "filename of the document being stored"
+    documentName: String
+    """
+    patientId uniquely identifies a patient.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution.
+    """
+    patientId: String
+    "type of file being represented.  Indicates the file extension if the file is to be written out."
+    documentType: DocumentTypeEnum
+    "byte array to store the body of the file in base64"
+    documentBody: String
+}
+
+input DocumentInput{
+    itemIdentifier: ItemIdentifierInput
+    "filename of the document being stored"
+    documentName: String
+    """
+    patientId uniquely identifies a patient.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution.
+    """
+    patientId: String
+    "type of file being represented.  Indicates the file extension if the file is to be written out."
+    documentType: DocumentTypeEnum
+    "byte array to store the body of the file in base64"
+    documentBody: String
+}
+
+enum DocumentTypeEnum{
+    UNKNOWN
+    PDF
+    TXT
+    XLS
+    JPG
+    PNG
+}

@@ -1,0 +1,15 @@
+"Used to send/receive a picture of the DD1380"
+type TcccInteraction{
+    tcccType : TcccInteractionTypeEnum!
+    patientId : String
+}
+"Used to send/receive a picture of the DD1380"
+input TcccInteractionInput{
+    tcccType : TcccInteractionTypeEnum!
+    patientId : String
+}
+
+enum TcccInteractionTypeEnum{
+    REQUEST
+    PROVIDE
+}

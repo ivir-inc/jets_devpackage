@@ -1,0 +1,15 @@
+
+type ControlInteraction{
+    "Federation-wide control interactions"
+    controlType : ControlTypeEnum
+    label : String
+}
+
+enum ControlTypeEnum{
+    START
+    STOP
+    PAUSE
+    RESUME
+    SAVE
+    RESTORE
+}

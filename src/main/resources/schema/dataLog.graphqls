@@ -1,0 +1,24 @@
+type DataLog{
+    itemIdentifier: ItemIdentifier
+    "Time the data was logged in system time"
+    time: Long
+    "Description from the FOM: Name of the federate doing the logging"
+    source: String
+    """
+    A string representing the logged data.  Sender and receiver will be responsible for parsing the string to produce data.
+    """
+    data: String
+
+}
+
+input DataLogInput{
+    itemIdentifier: ItemIdentifierInput
+    "Time the data was logged in system time"
+    time: Long
+    "Description from the FOM: Name of the federate doing the logging"
+    source: String
+    """
+    A string representing the logged data.  Sender and receiver will be responsible for parsing the string to produce data.
+    """
+    data: String
+}

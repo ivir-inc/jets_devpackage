@@ -1,0 +1,11 @@
+type PhysicalLocationRecord{
+    latitude: Float
+    longitude: Float
+    altitude: Float
+}
+
+input PhysicalLocationRecordInput{
+    latitude: Float
+    longitude: Float
+    altitude: Float
+}

@@ -1,0 +1,118 @@
+type PhysicalTreatment implements TreatmentInterface {
+    itemIdentifier: ItemIdentifier
+    "Enumeration of the types of physical treatment administered to a patient."
+    treatment: PhysicalTreatmentTypeEnum
+    "What device was used to administer the treatment."
+    deviceUsed: TreatmentDeviceEnum
+    "Used to identify whether the treatment is active or inactive.  True/1 = Active, False/0 = inactive"
+    treatmentActive: Boolean
+    """
+    patientId associates the treatment to a unique patient.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution.
+    """
+    patientId: String
+    """
+    May be null.  Associates a treatment with a unique injury or symptom.  If null, indicates that the treatment is not
+    associated with a specific injury.
+    """
+    injuryId: String
+    """
+    The treatmentId is a unique value which associates a treatment to an injury and a patient.  Once a treatmentId is
+    created, it cannot be reused during an execution.
+    Naming Convention: Treatment_uniquevalue
+    """
+    treatmentId: String
+    """
+    May be null.  Used to specify what part of the body a treatment is applied to IF a treatment is applied to a
+    specific body location.
+    """
+  treatmentLocation: BodyLocationRecord
+    "This attribute indicates the time  the treatment in simulation elapsed time."
+    treatmentTime: Long
+}
+
+input PhysicalTreatmentInput{
+    itemIdentifier: ItemIdentifierInput
+    "Enumeration of the types of physical treatment administered to a patient."
+    treatment: PhysicalTreatmentTypeEnum
+    "What device was used to administer the treatment."
+    deviceUsed: TreatmentDeviceEnum
+    "Used to identify whether the treatment is active or inactive.  True/1 = Active, False/0 = inactive"
+    treatmentActive: Boolean
+    """
+    patientId associates the treatment to a unique patient.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution.
+    """
+    patientId: String
+    """
+    May be null.  Associates a treatment with a unique injury or symptom.  If null, indicates that the treatment is not
+    associated with a specific injury.
+    """
+    injuryId: String
+    """
+    The treatmentId is a unique value which associates a treatment to an injury and a patient.  Once a treatmentId is
+    created, it cannot be reused during an execution.
+    Naming Convention: Treatment_uniquevalue
+    """
+    treatmentId: String
+    """
+    May be null.  Used to specify what part of the body a treatment is applied to IF a treatment is applied to a
+    specific body location.
+    """
+  treatmentLocation: BodyLocationRecordInput
+    "This attribute indicates the time  the treatment in simulation elapsed time."
+    treatmentTime: Long
+}
+
+enum PhysicalTreatmentTypeEnum{
+    BANDAGE_BURN
+    CATHETERIZE
+    CHEST_COMPRESSION
+    CLEAN_WOUND
+    COVER_EYE
+    DEFIBRILLATE
+    ELEVATE_HEAD
+    IMMOBILIZE_SPINE
+    OPEN_NASAL_AIRWAY
+    OPEN_TRACHEAL_AIRWAY
+    RELEASE_COMPARTMENTAL_PRESSURE
+    RELEASE_INTRAPLEURAL_PRESSURE
+    RELEASE_SKIN_PRESSURE
+    SEAL_CHEST_WOUND
+    STABILIZE_ORTHOPEDIC_FRACTURE
+    STOP_HEMORRHAGE
+    VENTILATION_HYPER
+    VENTILATION_MANUAL
+    VENTILATION_PEEP15
+    VENTILATION_PEEP5
+    WARM_PATIENT
+}
+
+enum TreatmentDeviceEnum{
+    BANDAGE
+    CERVICAL_COLLAR
+    CHEST_NEEDLE_DECOMPRESSION
+    CHEST_TUBE
+    ENDOTRACHEAL_TUBE
+    ENDOVASCULAR_BALLOON
+    EXTREMITY_TOURNIQUET
+    EYE_SHIELD
+    FOLEY_CATHETER
+    GAUZE
+    JUNCTIONAL_TOURNIQUET
+    LARYNGEAL_TUBE
+    LARYNGOSCOPE
+    LITTER
+    MYLAR_BLANKET
+    NASOPHARYNGEAL_AIRWAY
+    NOT_APPLICABLE
+    OCCLUSIVE_DRESSING
+    OROPHARYNGEAL_AIRWAY
+    OXYGEN_MASK
+    SPINE_BOARD
+    SPLINT
+    SUPRAGLOTTIC_DEVICE
+    VENTED_OCCLUSIVE_DRESSING
+    ISOPROPYL_ALCOHOL_PAD
+    CRICOTHYROIDOTOMY_KIT
+}

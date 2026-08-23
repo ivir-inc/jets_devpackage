@@ -1,0 +1,107 @@
+type Event{
+    itemIdentifier: ItemIdentifier
+    """
+    Wallclock (epoch) time of the event.
+    Allows determination of when the event took place in epoch time.
+    """
+    time: Long
+    """
+    Simulation elapsed time the event pertains to.
+    Allows a system to place the event in the time sequence of events for a particular training event.
+    """
+    simTime: Long
+    """
+    Type provides a basic description of how the event was created or its importance.  Allows a system to better
+    organize and categorize events.
+    """
+    type: EventTypeEnum
+    "Who created the event (Federate Name)"
+    source: String
+    "Patient the event applies to (may be null)"
+    patientId: String
+    "Learner the event applies to (may be null)"
+    learnerId: String
+    "Instructor the event applies to (may be null)"
+    instructorId: String
+    "Team the event applies to (may be null)"
+    teamId: String
+    "Used to identify the training facility an Event is associated with. Can be used to filter events."
+    trainingFacilityId: String
+    "Text associated with the event to provide a more detailed description of the event (may be null)"
+    notes: String
+    "A longer description of the contents of the notes attribute"
+    description: String
+  "An action taken by the learner that is not a direct treatment for the patient."
+  learnerAction: LearnerActionEnum
+}
+
+input EventInput{
+    itemIdentifier: ItemIdentifierInput
+    """
+    Wallclock (epoch) time of the event.
+    Allows determination of when the event took place in epoch time.
+    """
+    time: Long
+    """
+    Simulation elapsed time the event pertains to.
+    Allows a system to place the event in the time sequence of events for a particular training event.
+    """
+    simTime: Long
+    """
+    Type provides a basic description of how the event was created or its importance.  Allows a system to better
+    organize and categorize events.
+    """
+    type: EventTypeEnum
+    "Who created the event (Federate Name)"
+    source: String
+    "Patient the event applies to (may be null)"
+    patientId: String
+    "Learner the event applies to (may be null)"
+    learnerId: String
+    "Instructor the event applies to (may be null)"
+    instructorId: String
+    "Team the event applies to."
+    teamId: String
+    """
+    Used to identify the training facility an Event is associated with. Can be used to filter events.
+    """
+    trainingFacilityId: String
+    "Text associated with the event to provide a more detailed description of the event (may be null)"
+    notes: String
+    "A longer description of the contents of the notes attribute"
+    description: String
+  "An action taken by the learner that is not a direct treatment for the patient."
+  learnerAction: LearnerActionEnum
+}
+
+enum EventTypeEnum{
+    NOT_APPLICABLE
+    INSTRUCTOR_OBSERVATION
+    TREATMENT
+    LEARNER_ACTION
+}
+
+enum LearnerActionEnum {
+  NOT_APPLICABLE
+  PREPARE_EQUIPMENT
+  DON_PPE
+  POSITION_PATIENT
+  EXPOSE_PATIENT
+  RELOCATE_PATIENT
+  EXTRICATE_PATIENT_FROM_VEHICLE
+  LOCATE_ANATOMICAL_LANDMARKS
+  SUCTION_AIRWAY
+  CATHETERIZE_PATIENT
+  COMMUNICATE_WITH_PATIENT
+  ASSESS_BLEEDING
+  ASSESS_AIRWAY
+  ASSESS_BREATHING
+  ASSESS_CIRCULATION
+  MONITOR_PATIENT
+  PERFORM_TRAUMA_EXAM
+  MEASURE_PATIENT_RESPONSIVENESS
+  COLLECT_BLOOD_SAMPLE
+  COLLECT_URINE_SAMPLE
+  PLACE_ECG_LEADS
+  CREATE_STERILE_FIELD
+}

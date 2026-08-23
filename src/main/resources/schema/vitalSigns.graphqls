@@ -1,0 +1,44 @@
+type VitalSigns {
+  itemIdentifier: ItemIdentifier
+  ownershipState: OwnershipStateEnum
+  "Name of the patient"
+  patientId: ID
+  "Beats per minute"
+  heartRate: Int
+  "mm Hg expressed as an integer for diastolic blood pressure"
+  diastolicBloodPressure: Int
+  "mm Hg expressed as an integer for systolic blood pressure"
+  systolicBloodPressure: Int
+  "SPO2 (Peripheral Oxygen Saturation) as a float, e.g., .80 = 80%"
+  peripheralOxygenSaturation: Float
+  "Temperature in degrees Fahrenheit"
+  temperatureFahrenheit: Float
+  """
+  Percentage expressed as a float, e.g., 5% = .05 for End-Tidal CO2 concentration"
+  """
+  respirationEndTidalCarbonDioxide: Float
+  "The number of breaths per minute."
+  respirationRate: Float
+}
+
+input VitalSignsInput {
+  itemIdentifier: ItemIdentifierInput
+  "Name of the patient"
+  patientId: String
+  "Beats per minute"
+  heartRate: Int
+  "mm Hg expressed as an integer for diastolic blood pressure"
+  diastolicBloodPressure: Int
+  "mm Hg expressed as an integer for systolic blood pressure"
+  systolicBloodPressure: Int
+  "SPO2 (Peripheral Oxygen Saturation) as a float, e.g., .80 = 80%"
+  peripheralOxygenSaturation: Float
+  "Temperature in degrees Fahrenheit"
+  temperatureFahrenheit: Float
+  """
+  Percentage expressed as a float, e.g., 5% = .05 for End-Tidal CO2 concentration"
+  """
+  respirationEndTidalCarbonDioxide: Float
+  "The number of breaths per minute."
+  respirationRate: Float
+}

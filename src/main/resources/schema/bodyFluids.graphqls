@@ -1,0 +1,59 @@
+type BodyFluids{
+    itemIdentifier: ItemIdentifier
+    """
+    patientId uniquely identifies a patient.
+    Once a Patient object is created, the ID is static and cannot be changed or
+    reused during an execution.
+    """
+    patientId : String
+    """
+    The current blood volume of the patient, in mL. Is affected by active hemorrhage
+    (loss) and fluid resuscitation (gain). May be null if this quantity is not modeled.
+    """
+    bloodVolume : Float
+    """
+    The rate of blood loss in mL/min. While the hemorrhageRate attribute in the
+    HemorrhageInjury class defines the initial injury attribute, this bloodLossRate
+    attribute is reported in real time and reacts to treatments. May be null if this
+    quantity is not modeled or is not part of the scenario.
+    """
+    bloodLossRate : Float
+    """
+    The rate of urine production, in mL/min. May be null if this quantity is not modeled.
+    """
+    urineOutputRate: Float
+    """
+    Amount of fluid lost as sweat, in mL. May be null if this quantity is not modeled.
+    """
+    sweatRate : Float
+}
+
+input BodyFluidsInput{
+    itemIdentifier: ItemIdentifierInput
+    """
+    patientId uniquely identifies a patient.
+    Once a Patient object is created, the ID is static and cannot be changed or
+    reused during an execution.
+    """
+    patientId : String
+    """
+    The current blood volume of the patient, in mL. Is affected by active hemorrhage
+    (loss) and fluid resuscitation (gain). May be null if this quantity is not modeled.
+    """
+    bloodVolume : Float
+    """
+    The rate of blood loss in mL/min. While the hemorrhageRate attribute in the
+    HemorrhageInjury class defines the initial injury attribute, this bloodLossRate
+    attribute is reported in real time and reacts to treatments. May be null if this
+    quantity is not modeled or is not part of the scenario.
+    """
+    bloodLossRate : Float
+    """
+    The rate of urine production, in mL/min. May be null if this quantity is not modeled.
+    """
+    urineOutputRate: Float
+    """
+    Amount of fluid lost as sweat, in mL. May be null if this quantity is not modeled.
+    """
+    sweatRate : Float
+}

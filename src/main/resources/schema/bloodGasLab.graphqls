@@ -1,0 +1,33 @@
+type BloodGasLab{
+    itemIdentifier: ItemIdentifier
+    "Measured in mmHg."
+    partialPressureCarbonDioxide: Float
+    "Measured in mmHg"
+    partialPressureOxygen: Float
+    "Measured in mmol/L"
+    totalCarbonDioxide: Float
+    "Measured as a % from 0 to 100. Express as decimal"
+    sulfurDioxide: Float
+    """ patientId uniquely identifies a patient.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution."""
+    patientId: String
+    "Simulation time that the lab was taken."
+    Time: Long
+}
+
+input BloodGasLabInput{
+    itemIdentifier: ItemIdentifierInput
+    "Measured in mmHg."
+    partialPressureCarbonDioxide: Float
+    "Measured in mmHg"
+    partialPressureOxygen: Float
+    "Measured in mmol/L"
+    totalCarbonDioxide: Float
+    "Measured as a % from 0 to 100. Express as decimal"
+    sulfurDioxide: Float
+    """ patientId uniquely identifies a patient.
+        Once a Patient object is created, the ID is static and cannot be changed or reused during an execution."""
+    patientId: String
+    "Simulation time that the lab was taken."
+    Time: Long
+}

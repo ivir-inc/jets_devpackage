@@ -1,0 +1,95 @@
+type NeurologicalScales{
+    itemIdentifier: ItemIdentifier
+    patientId : String
+    glasgowComaScale : GlasgowComaScaleRecord
+    levelOfResponse : LevelOfResponseEnum
+    levelOfConsciousness : LevelOfConsciousnessEnum
+}
+
+input NeurologicalScalesInput{
+    itemIdentifier: ItemIdentifierInput
+    patientId : String
+    glasgowComaScale : GlasgowComaScaleRecordInput
+    levelOfResponse : LevelOfResponseEnum
+    levelOfConsciousness : LevelOfConsciousnessEnum
+}
+
+type GlasgowComaScaleRecord{
+    """
+    Eye Opening Response
+    - Spontaneous--open with blinking at baseline 4 points
+    - To verbal stimuli, command, speech 3 points
+    - To pain only (not applied to face) 2 points
+    - No response 1 point
+    """
+    eyes : Int
+    """
+    Verbal Response
+    - Oriented 5 points
+    - Confused conversation, but able to answer questions 4 points
+    - Inappropriate words 3 points
+    - Incomprehensible speech 2 points
+    - No response 1 point
+    """
+    verbal : Int
+    """
+    Motor Response
+    - Obeys commands for movement 6 points
+    - Purposeful movement to painful stimulus 5 points
+    - Withdraws in response to pain 4 points
+    - Flexion in response to pain (decorticate posturing) 3 points
+    - Extension response in response to pain (decerebrate posturing) 2 points
+    - No response 1 point
+    """
+    motor : Int
+}
+
+input GlasgowComaScaleRecordInput{
+    """
+    Eye Opening Response
+    - Spontaneous--open with blinking at baseline 4 points
+    - To verbal stimuli, command, speech 3 points
+    - To pain only (not applied to face) 2 points
+    - No response 1 point
+    """
+    eyes : Int
+    """
+    Verbal Response
+    - Oriented 5 points
+    - Confused conversation, but able to answer questions 4 points
+    - Inappropriate words 3 points
+    - Incomprehensible speech 2 points
+    - No response 1 point
+    """
+    verbal : Int
+    """
+    Motor Response
+    - Obeys commands for movement 6 points
+    - Purposeful movement to painful stimulus 5 points
+    - Withdraws in response to pain 4 points
+    - Flexion in response to pain (decorticate posturing) 3 points
+    - Extension response in response to pain (decerebrate posturing) 2 points
+    - No response 1 point
+    """
+    motor : Int
+}
+
+enum LevelOfResponseEnum{
+    ALERT
+    VERBAL
+    PAIN
+    UNRESPONSIVE
+}
+
+enum LevelOfConsciousnessEnum{
+    NORMAL
+    CONFUSED
+    IMPAIRED
+    COMATOSE
+    CONVULSING
+    NOT_BREATHING
+    NEAR_DEATH
+    DEAD
+    UNCONSCIOUS
+    PARALYZED
+}

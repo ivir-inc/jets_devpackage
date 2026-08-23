@@ -1,0 +1,53 @@
+
+type MedicalEvacuationInteraction{
+    "Identifies the type of update for this interaction."
+    medicalEvacuationType: MedicalEvacuationTypeEnum!
+    "Identifies the unique patient associated with the MEDEVAC request."
+    patientId : String
+    "Defines the general type of transport requested."
+    transportType: TransportTypeEnum
+    "Name of the destination for the current route."
+    siteName: String @deprecated(reason: "siteName is replaced by facilityId as of v4 of the fom")
+    "Id of the destination facility for the current route."
+    facilityId: String
+    medicalEvacuationState: MedicalEvacuationStateEnum
+    "Unique vehicle identifier."
+    vehicleId: String
+}
+
+input MedicalEvacuationInteractionInput{
+    "Identifies the type of update for this interaction"
+    medicalEvacuationType: MedicalEvacuationTypeEnum!
+    "Identifies the unique patient associated with the MEDEVAC request"
+    patientId : String
+    "Defines the general type of transport requested."
+    transportType: TransportTypeEnum
+    "Name of the destination for the current route."
+    siteName: String @deprecated(reason: "siteName is replaced by facilityId as of v4 of the fom")
+    "Id of the destination facility for the current route."
+    facilityId: String
+    medicalEvacuationState: MedicalEvacuationStateEnum
+    "Unique vehicle identifier."
+    vehicleId: String
+}
+
+enum MedicalEvacuationTypeEnum{
+    REQUEST
+    UPDATE
+    RESPONSE
+}
+
+enum TransportTypeEnum{
+    UNKNOWN
+    GROUND
+    AIR
+}
+
+enum MedicalEvacuationStateEnum{
+    NOT_APPLICABLE
+    ACKNOWLEDGEMENT
+    ENROUTE
+    ARRIVAL
+    PATIENT_LOADED
+    DROPOFF
+}

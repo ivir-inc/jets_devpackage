@@ -1,0 +1,28 @@
+type CreatePatient{
+    itemIdentifier: ItemIdentifier
+    """
+    patientId uniquely identifies a patient.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution.
+    """
+    patientId: String
+    """
+    Federate name(s) of the target(s) of this interaction.
+    Federate names will be separated by commas (AAR, PHYSIOLOGY, CONTROL)
+    """
+    target: String
+
+}
+
+input CreatePatientInput{
+    itemIdentifier: ItemIdentifierInput
+    """
+    patientId uniquely identifies a patient.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution.
+    """
+    patientId: String
+    """
+    Federate name(s) of the target(s) of this interaction.
+    Federate names will be separated by commas (AAR, PHYSIOLOGY, CONTROL)
+    """
+    target: String
+}

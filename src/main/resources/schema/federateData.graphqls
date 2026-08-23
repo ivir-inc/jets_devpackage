@@ -1,0 +1,15 @@
+type FederateData{
+    itemIdentifier: ItemIdentifier
+    "Experimental class"
+    id: String
+    type: String
+    payload: String
+}
+
+input FederateDataInput{
+    itemIdentifier: ItemIdentifierInput
+    "Experimental class"
+    id: String
+    type: String
+    payload: String
+}

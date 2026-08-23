@@ -1,0 +1,62 @@
+/*
+ * Copyright 2026 IVIR Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.ivir.devpackage.model;
+
+import com.netflix.graphql.dgs.*;
+import graphql.schema.DataFetchingEnvironment;
+import org.reactivestreams.Publisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.Map;
+
+@DgsComponent
+public class PhysiologyDataFetcher extends DataFetcherBase{
+    private static final Logger logger = LoggerFactory.getLogger(PhysiologyDataFetcher.class);
+
+    @PostConstruct
+    public void init() {
+        initialize("Physiology");
+        logger.info("PhysiologyDataFetcher initialized.");
+    }
+
+    @DgsQuery
+    public Map<String, Object> physiologyById(@InputArgument Integer itemId) {
+        logger.info("Querying Physiology with itemId: {}", itemId);
+        return getById(itemId);
+    }
+
+    @DgsQuery
+    public List<Map<String, Object>> physiologyAll() {
+        logger.info("Querying all Physiology records.");
+        return getAll();
+    }
+
+    @DgsData(parentType = "Mutation", field = "physiologyUpdate")
+    public String physiologyUpdate(DataFetchingEnvironment dfe) {
+        logger.info("Mutation: physiologyUpdate called.");
+        return update(dfe, "physiology");
+    }
+
+    @DgsSubscription
+    public Publisher<Map<String, Object>> monitorPhysiology() {
+        logger.info("Subscription: monitorPhysiology called.");
+        return monitor();
+    }
+}

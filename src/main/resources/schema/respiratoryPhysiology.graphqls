@@ -1,0 +1,35 @@
+type RespiratoryPhysiology {
+  itemIdentifier: ItemIdentifier
+  "Name of the patient"
+  patientID: ID
+  "Lung tidal volume in milliliters (mL)"
+  lungTidalVolume: Int
+  "Lung dead space in milliliters (mL)"
+  lungDeadSpace: Int
+  "Total lung capacity in milliliters (mL)"
+  lungTotalCapacity: Int
+  "Lung expiratory reserve in milliliters (mL)"
+  lungExpiratoryReserve: Int
+  "Lung inspiratory reserve in milliliters (mL)"
+  lungInspiratoryReserve: Int
+  "Lung residual volume in milliliters (mL)"
+  lungResidualVolume: Int
+}
+
+input RespiratoryPhysiologyInput {
+  itemIdentifier: ItemIdentifierInput
+  "Name of the patient"
+  patientID: String
+  "Lung tidal volume in milliliters (mL)"
+  lungTidalVolume: Int
+  "Lung dead space in milliliters (mL)"
+  lungDeadSpace: Int
+  "Total lung capacity in milliliters (mL)"
+  lungTotalCapacity: Int
+  "Lung expiratory reserve in milliliters (mL)"
+  lungExpiratoryReserve: Int
+  "Lung inspiratory reserve in milliliters (mL)"
+  lungInspiratoryReserve: Int
+  "Lung residual volume in milliliters (mL)"
+  lungResidualVolume: Int
+}

@@ -1,0 +1,103 @@
+type BloodLab{
+    itemIdentifier: ItemIdentifier
+    "Measured in mmol/L"
+    sodium: Float @deprecated(reason: "sodium moved to bloodSodium as of v2 of the FOM")
+    "Measured in mmol/L"
+    bloodSodium: Float
+    "Measured in mmol/L"
+    potassium: Float
+    "Measured in mEq/L"
+    bloodChloride: Float
+    "Measured in mmol/L."
+    lactate: Float
+    "Measured in mmol/L."
+    bloodKetones: Float
+    "Measured in mmol/L."
+    fattyAcids: Float
+    "Measured in mg/dL"
+    triglycerides: Float
+    "Measured in mg/dL"
+    bloodCreatinine: Float
+    "Measured in mg/dL."
+    bloodUreaNitrogen: Float
+    "Measured in mg/dL."
+    bloodPhosphate: Float
+    "Measured in mmol/L."
+    ionizedCalcium: Float
+    "Measured in mg/dL."
+    bloodGlucose: Float
+    "Measured as a % from 0 to 100. Express as decimal."
+    hematocrit: Float
+    "Measured in g/dL."
+    hemoglobin: Float
+    "Unitless"
+    bloodPh: Float
+    "Measured in mmol/L"
+    bicarbonate: Float @deprecated(reason: "bicarbonate moved to bloodBicarbonate as of v2 of the FOM")
+    "Measured in mmol/L."
+    bloodBicarbonate: Float
+    "Measured in mmol/L."
+    baseExcess: Float
+    """
+    patientId uniquely identifies a patient.  Once a Patient object is created, the ID is static and cannot be
+    changed or reused during an execution.
+    """
+    patientId: String
+    "Simulation time that the lab was taken."
+    time: Long
+}
+
+input BloodLabInput{
+    itemIdentifier: ItemIdentifierInput
+    """
+    Measured in mmol/L
+    **Deprecated** - sodium moved to bloodSodium as of v2 of the FOM
+    """
+    sodium: Float
+    "Measured in mmol/L"
+    bloodSodium: Float
+    "Measured in mmol/L"
+    potassium: Float
+    "Measured in mEq/L"
+    bloodChloride: Float
+    "Measured in mmol/L."
+    lactate: Float
+    "Measured in mmol/L."
+    bloodKetones: Float
+    "Measured in mmol/L."
+    fattyAcids: Float
+    "Measured in mg/dL"
+    triglycerides: Float
+    "Measured in mg/dL"
+    bloodCreatinine: Float
+    "Measured in mg/dL."
+    bloodUreaNitrogen: Float
+    "Measured in mg/dL."
+    bloodPhosphate: Float
+    "Measured in mmol/L."
+    ionizedCalcium: Float
+    "Measured in mg/dL."
+    bloodGlucose: Float
+    "Measured as a % from 0 to 100. Express as decimal."
+    hematocrit: Float
+    "Measured in g/dL."
+    hemoglobin: Float
+    "Unitless"
+    bloodPh: Float
+    """
+    Measured in mmol/L
+    **Deprecated** - bicarbonate moved to bloodBicarbonate as of v2 of the FOM
+    """
+    bicarbonate: Float
+    "Measured in mmol/L."
+    bloodBicarbonate: Float
+    "Measured in mmol/L."
+    baseExcess: Float
+    """
+    patientId uniquely identifies a patient.  Once a Patient object is created, the ID is static and cannot be
+    changed or reused during an execution.
+    """
+    patientId: String
+    "Simulation time that the lab was taken."
+    time: Long
+}

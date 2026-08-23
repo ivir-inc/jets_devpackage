@@ -1,0 +1,26 @@
+
+type PatientInteraction{
+    "Patient-specific control interactions."
+    patientType: PatientTypeEnum
+    "The unique patient being controlled by this interaction."
+    patientId : String
+    "The elapsed time at which this interaction is applied. If null, the action is immediate."
+    simulationElapsedTime : Long
+}
+
+input  PatientInteractionInput{
+    "Patient-specific control interactions."
+    patientType: PatientTypeEnum!
+    "The unique patient being controlled by this interaction."
+    patientId : String!
+    "The elapsed time at which this interaction is applied. If null, the action is immediate."
+    simulationElapsedTime : Long!
+}
+
+enum PatientTypeEnum{
+    LOAD
+    START
+    STOP
+    PAUSE
+    RESUME
+}

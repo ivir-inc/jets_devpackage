@@ -1,0 +1,176 @@
+type Injury{
+    itemIdentifier: ItemIdentifier
+    "patientId associates a particular patient to a particular injuryId"
+    patientId: String
+    "Used to identify a particular injury and related physiological insult."
+    injuryId: String
+    "This optional attribute indicates the time of injury in simulation elapsed time.  If null, the injury time is current time."
+    time: Long
+    "Enumerations of the body locations where the injury occurs"
+  injuryLocation: BodyLocationRecord
+  "Physiological type of injury."
+    injuryType: InjuryTypeEnum
+  "Physical description of the injury."
+  injuryDescription: InjuryDescriptionEnum
+  "Additional detail to describe the injury."
+  injuryDetail: String
+  "Mechanism of injury."
+  mechanismOfInjury: MechanismOfInjuryRecord
+  "The rate of hemorrhage measured in mL per minute. May be null if injury is not a hemorrhage type."
+  hemorrhageRate: Float
+  "Percentage of body covered by the burn, expressed as a decimal. May be null if injury is not a burn type."
+  totalBodySurfaceArea: Float
+    "Scale 0 to 10 of injury severity, with 1 being minimal severity and 10 being maximum severity. 0 is used for effects that are fully described by a subclass instead."
+    injurySeverity: Int
+}
+
+input InjuryInput{
+    itemIdentifier: ItemIdentifierInput
+    "patientId associates a particular patient to a particular injuryId"
+    patientId: String
+    "Used to identify a particular injury and related physiological insult."
+    injuryId: String
+    "This optional attribute indicates the time of injury in simulation elapsed time.  If null, the injury time is current time."
+    time: Long
+    "Enumerations of the body locations where the injury occurs"
+  injuryLocation: BodyLocationRecordInput
+  "Physiological type of injury."
+    injuryType: InjuryTypeEnum
+  "Physical description of the injury."
+  injuryDescription: InjuryDescriptionEnum
+  "Additional detail to describe the injury."
+  injuryDetail: String
+  "Mechanism of injury."
+  mechanismOfInjury: MechanismOfInjuryRecordInput
+  "The rate of hemorrhage measured in mL per minute. May be null if injury is not a hemorrhage type."
+  hemorrhageRate: Float
+  "Percentage of body covered by the burn, expressed as a decimal. May be null if injury is not a burn type."
+  totalBodySurfaceArea: Float
+    "Scale 0 to 10 of injury severity, with 1 being minimal severity and 10 being maximum severity. 0 is used for effects that are fully described by a subclass instead."
+    injurySeverity: Int
+}
+
+enum InjuryTypeEnum {
+  NOT_APPLICABLE
+  HEMORRHAGE
+  AIRWAY_OBSTRUCTION
+  FRACTURE
+  TRAUMATIC_BRAIN_INJURY
+  PNEUMOTHORAX
+  TENSION_PNEUMOTHORAX
+  HEMOTHORAX
+  BURN
+  COMPARTMENTAL_PRESSURE
+}
+
+enum InjuryDescriptionEnum {
+  NOT_APPLICABLE
+  AMPUTATION
+  LACERATION
+  PUNCTURE
+  PENETRATING
+  BLUNT
+  SPRAIN
+  CRUSH
+  DISLOCATION
+  EXPOSURE
+}
+
+type MechanismOfInjuryRecord {
+    gunshotCaliber: GunshotCaliberEnum
+    gunshotAmmunitionType: GunshotAmmunitionTypeEnum
+    blade: BladeTypeEnum
+    blast: BlastTypeEnum
+    vehicleCrash: VehicleCrashEnum
+    fall: FallTypeEnum
+    cbrn: CBRNTypeEnum
+    shrapnel: ShrapnelTypeEnum
+}
+
+input MechanismOfInjuryRecordInput {
+    gunshotCaliber: GunshotCaliberEnum
+    gunshotAmmunitionType: GunshotAmmunitionTypeEnum
+    blade: BladeTypeEnum
+    blast: BlastTypeEnum
+    vehicleCrash: VehicleCrashEnum
+    fall: FallTypeEnum
+    cbrn: CBRNTypeEnum
+    shrapnel: ShrapnelTypeEnum
+}
+
+enum GunshotCaliberEnum {
+    NOT_APPLICABLE
+    UNKNOWN
+    CAL_22LR
+    CAL_9MM
+    CAL_10MM
+    CAL_50BMG
+    CAL_556X45
+    CAL_762X51
+}
+
+enum GunshotAmmunitionTypeEnum {
+    NOT_APPLICABLE
+    UNKNOWN
+    FULL_METAL_JACKET
+    HOLLOW_POINT
+    ARMOR_PIERCING
+    INCENDIARY
+}
+
+enum BladeTypeEnum {
+    NOT_APPLICABLE
+    UNKNOWN
+    SERRATED_SHORT
+    SERRATED_MEDIUM
+    SERRATED_LONG
+    SMOOTH_SHORT
+    SMOOTH_MEDIUM
+    SMOOTH_LONG
+}
+
+enum BlastTypeEnum {
+    NOT_APPLICABLE
+    UNKNOWN
+    IED_MOUNTED
+    IED_DISMOUNTED
+    GRENADE
+    RPG
+    INDIRECT
+    HIGH_YIELD_EXPLOSIVE
+}
+
+enum VehicleCrashEnum {
+    NOT_APPLICABLE
+    GROUND_VEHICLE_CRASH
+    GROUND_VEHICLE_IMPACT
+    AIRCRAFT_CRASH
+}
+
+enum FallTypeEnum {
+    NOT_APPLICABLE
+    UNKNOWN
+    UNDER_5_FEET
+    BETWEEN_5_TO_10_FEET
+    OVER_10_FEET
+}
+
+enum CBRNTypeEnum {
+    NOT_APPLICABLE
+    UNKNOWN
+    CHEMICAL
+    BIOLOGICAL
+    RADIOLOGICAL
+    NUCLEAR
+}
+
+enum ShrapnelTypeEnum {
+    NOT_APPLICABLE
+    UNKNOWN
+    ROUND_SMALL
+    ROUND_MEDIUM
+    ROUND_LARGE
+    JAGGED_SMALL
+    JAGGED_MEDIUM
+    JAGGED_LARGE
+}

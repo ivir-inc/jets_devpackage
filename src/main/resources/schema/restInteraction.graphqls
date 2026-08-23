@@ -1,0 +1,28 @@
+type RestInteraction{
+    "Used to transmit REST calls across the federation."
+    callType: RestCallTypeEnum!
+    messageId: String
+    toId: String
+    fromId: String
+    callMethod: String
+    path: String
+    payload: String
+    responseCode: Int
+}
+
+input RestInteractionInput{
+    "Used to transmit REST calls across the federation."
+    callType: RestCallTypeEnum!
+    messageId: String
+    toId: String
+    fromId: String
+    callMethod: String
+    path: String
+    payload: String
+    responseCode: Int
+}
+
+enum RestCallTypeEnum{
+    CALL
+    RESPONSE
+}

@@ -1,0 +1,31 @@
+type Facility{
+    itemIdentifier: ItemIdentifier
+    facilityId: String
+    location: PhysicalLocationRecord
+    roleOfCare: RoleOfCareEnum
+    facilityType: FacilityTypeEnum
+    patientCapacity: Int
+}
+
+input FacilityInput{
+    itemIdentifier: ItemIdentifierInput
+    facilityId: String
+    location: PhysicalLocationRecordInput
+    roleOfCare: RoleOfCareEnum
+    facilityType: FacilityTypeEnum
+    patientCapacity: Int
+}
+
+enum RoleOfCareEnum{
+    ROLE1
+    ROLE2
+    ROLE3
+    ROLE4
+    EN_ROUTE
+}
+
+enum FacilityTypeEnum{
+    FIXED
+    GROUND
+    AIR
+}

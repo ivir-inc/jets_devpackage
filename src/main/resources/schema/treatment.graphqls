@@ -1,0 +1,76 @@
+type Treatment {
+  itemIdentifier: ItemIdentifier
+  "Name of the patient being given the treatment."
+  patientId: String
+  """
+  May be null.  Associates a treatment with a unique injury or symptom.  If null, indicates that the treatment is not
+  associated with a specific injury... for example, a treatment (oxygen administered to a patient at high altitude)
+  may not be associated with a specific injury but rather to make the patient more comfortable.
+  """
+  injuryId: String
+  """
+  The treatmentId is a unique value which associates a treatment to an injury and a patient.  Once a treatmentId is
+  created, it cannot be reused during an execution.
+  Naming Convention: Treatment_uniquevalue
+  """
+  treatmentId: String
+  """
+  May be null.  Used to specify what part of the body a treatment is applied to IF a treatment is applied to a
+  specific body location.
+  """
+  treatmentLocation: BodyLocationRecord
+  "This attribute indicates the time the treatment in simulation elapsed time"
+  treatmentTime: Long
+}
+
+input TreatmentInput {
+  """
+  patientId identifies a unique patient.
+  Once a Patient object is created, the ID is static and cannot be changed or reused during an execution.
+  """
+  patientId: String
+  """
+  May be null.  Associates a treatment with a unique injury or symptom.  If null, indicates that the treatment is not
+  associated with a specific injury... for example, a treatment (oxygen administered to a patient at high altitude)
+  may not be associated with a specific injury but rather to make the patient more comfortable.
+  """
+  injuryId: String
+  """
+  The treatmentId is a unique value which associates a treatment to an injury and a patient.  Once a treatmentId is
+  created, it cannot be reused during an execution.
+  Naming Convention: Treatment_uniquevalue
+  """
+  treatmentId: String
+  """
+  May be null.  Used to specify what part of the body a treatment is applied to IF a treatment is applied to a
+  specific body location.
+  """
+  treatmentLocation: BodyLocationRecordInput
+  "This attribute indicates the time  the treatment in simulation elapsed time"
+  treatmentTime: Long
+}
+
+interface TreatmentInterface {
+  itemIdentifier: ItemIdentifier
+  "Name of the patient being given the treatment."
+  patientId: String
+  """
+  May be null. Associates a treatment with a unique injury or symptom. If null, indicates that the treatment is not
+  associated with a specific injury. For example, oxygen administered to a patient at high altitude may not be
+  associated with a specific injury but rather to make the patient more comfortable.
+  """
+  injuryId: String
+  """
+  The treatmentId is a unique value that associates a treatment to an injury and a patient. Once a treatmentId is
+  created, it cannot be reused during an execution.
+  Naming Convention: Treatment_uniquevalue
+  """
+  treatmentId: String
+  """
+  May be null. Used to specify what part of the body a treatment is applied to IF a treatment is applied to a
+  specific body location.
+  """
+  treatmentLocation: BodyLocationRecord
+  "This attribute indicates the time the treatment was applied in simulation elapsed time."
+  treatmentTime: Long
+}

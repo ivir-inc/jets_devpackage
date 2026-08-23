@@ -1,0 +1,137 @@
+type MedicationTreatment implements TreatmentInterface {
+    itemIdentifier: ItemIdentifier
+    "Name of the medication being administered."
+    medication: MedicationEnum
+    "Route by which the medication is administered."
+    administrationRoute: MedicationAdministrationRouteEnum
+    "Amount of medication administered.  The base units are ml or mg depending on the medication."
+    dosageValue: Float
+    """
+    The time period over which the medication is administered.  If the value is 0, the medication is administered as
+    a bolus.  The base time period is minutes.
+    """
+    dosageTimePeriod: Int
+    """
+    Indicates if a medication administration (e.g. drip) is active.  True/1 = active, or False/0 = stopped.  If active,
+    the rate calculations continue until the attribute changes to 0.  Bolus dosages will be 0.
+    """
+    dosageActive: Boolean
+    """
+    patientId that the medication is being applied to.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution.
+    """
+    patientId: String
+    """
+    May be null.  Associates a treatment with a unique injury.  If null, indicates that the treatment is not
+    associated with a specific injury.
+    """
+    injuryId: String
+    """
+    The treatmentId is a unique value.  Once a treatmentId is created, it cannot be reused during an execution.
+    Naming Convention: Treatment_uniquevalue
+    """
+    treatmentId: String
+    """
+    May be null. Used to specify what part of the body a treatment is applied to IF a treatment is applied to a
+    specific body location.
+    """
+  treatmentLocation: BodyLocationRecord
+    "This attribute indicates the time  the treatment in simulation elapsed time"
+    treatmentTime: Long
+}
+
+input MedicationTreatmentInput{
+    itemIdentifier: ItemIdentifierInput
+    "Name of the medication being administered."
+    medication: MedicationEnum
+    "Route by which the medication is administered."
+    administrationRoute: MedicationAdministrationRouteEnum
+    "Amount of medication administered.  The base units are ml or mg depending on the medication."
+    dosageValue: Float
+    """
+    The time period over which the medication is administered.  If the value is 0, the medication is administered as
+    a bolus.  The base time period is minutes.
+    """
+    dosageTimePeriod: Int
+    """
+    Indicates if a medication administration (e.g. drip) is active.  True/1 = active, or False/0 = stopped.  If active,
+    the rate calculations continue until the attribute changes to 0.  Bolus dosages will be 0.
+    """
+    dosageActive: Boolean
+    """
+    patientId that the medication is being applied to.
+    Once a Patient object is created, the ID is static and cannot be changed or reused during an execution.
+    """
+    patientId: String
+    """
+  May be null.  Associates a treatment with a unique injury or symptom.  If null, indicates that the treatment is not
+    associated with a specific injury.
+    """
+    injuryId: String
+    """
+    The treatmentId is a unique value.  Once a treatmentId is created, it cannot be reused during an execution.
+    Naming Convention: Treatment_uniquevalue
+    """
+    treatmentId: String
+    """
+    May be null. Used to specify what part of the body a treatment is applied to IF a treatment is applied to a
+    specific body location.
+    """
+  treatmentLocation: BodyLocationRecordInput
+    "This attribute indicates the time  the treatment in simulation elapsed time"
+    treatmentTime: Long
+}
+
+enum MedicationEnum {
+    ACETAMINOPHEN
+    ACYCLOVIR
+    ADENOSINE
+    ASPIRIN
+    ATROPINE
+    CALCIUM_GLUCONATE
+    CLINDAMYCIN
+    DEXTROSE
+    DIPHENHYDRAMINE
+    EPINEPHRINE
+    ERTAPENEM
+    FENTANYL_CITRATE
+    FRESH_WHOLE_BLOOD
+    HEXTEND
+    IBUPROFEN
+    KETAMINE
+    LACTATED_RINGERS
+    LIDOCAINE
+    MELOXICAM
+    METHYLPREDNISOLONE
+    MIDAZOLAM_HYDROCHLORIDE
+    MORPHINE
+    MOXIFLOXACIN
+    NALOXONE
+    NARCAN
+    NOT_APPLICABLE
+    ONDANSETRON
+    OXYGEN
+    PACKED_RED_BLOOD_CELLS # added in rel4
+    PLASMA
+    PLASMALYTE_A
+    RED_BLOOD_CELLS
+    SALINE09
+    SALINE3
+    SODIUM_CHLORIDE
+    TRANEXAMIC_ACID
+}
+
+enum MedicationAdministrationRouteEnum{
+    BUCCAL
+    INTRADERMAL
+    INTRAMUSCULAR
+    INTRAOSSEOUS_BOLUS
+    INTRAOSSEOUS_DRIP
+    INTRAVENOUS_BOLUS
+    INTRAVENOUS_DRIP
+    ORAL
+    RECTAL
+    SUBLINGUAL
+    UNKNOWN
+    NASAL
+}

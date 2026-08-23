@@ -1,0 +1,31 @@
+type CasualtyState{
+    itemIdentifier: ItemIdentifier
+    patientId: String
+    facilityId: String
+    evacuationPriority: EvacuationPriorityEnum
+    triageClassification: TriageEnum
+}
+
+input CasualtyStateInput{
+    itemIdentifier: ItemIdentifierInput
+    patientId: String
+    facilityId: String
+    evacuationPriority: EvacuationPriorityEnum
+    triageClassification: TriageEnum
+}
+
+enum EvacuationPriorityEnum{
+    URGENT
+    URGENT_SURGICAL
+    PRIORITY
+    ROUTINE
+    CONVENIENCE
+    NOT_APPLICABLE
+}
+
+enum TriageEnum {
+    DELAYED
+    IMMEDIATE
+    EXPECTANT
+    MINIMAL
+}
