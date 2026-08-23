@@ -1,8 +1,8 @@
 # JETS Developer Package
 
 The **JETS Developer Package** ("DevPackage") is a Java 17 / Spring Boot
-application that connects to an [HLA](https://en.wikipedia.org/wiki/High_Level_Architecture)
-medical-simulation federation and exposes its data through a modern
+application that connects to the [HLA-based](https://en.wikipedia.org/wiki/High_Level_Architecture)
+JETS federation and exposes its data through a modern
 **GraphQL API** (queries, mutations, and server-sent-event subscriptions).
 It ships with an optional [Apache Pivot](https://attic.apache.org/projects/pivot.html)
 desktop GUI and can also run headless.
@@ -10,7 +10,11 @@ desktop GUI and can also run headless.
 It is intended as a starting point for developers who want to build tools,
 dashboards, or integrations against a JETS medical-simulation federation
 without writing HLA/RTI code directly — the DevPackage handles the RTI
-plumbing and hands you GraphQL.
+plumbing and hands you GraphQL. The available GraphQL queries and mutations are self-documented and can be viewed using an API tool like [Insomnia](https://insomnia.rest/).
+
+For more information, please contact jets@ivirinc.com
+
+For additional detail on JETS, see https://jets-systems.com/
 
 > Licensed under the [Apache License 2.0](LICENSE).
 
@@ -102,8 +106,9 @@ export RTI_HOME=/path/to/portico-2.1.4
 ./run.sh              # with GUI
 ./run_headless.sh     # headless
 
-# Windows: edit RTI_HOME in run.bat, then
-run.bat
+# Windows: edit RTI_HOME in run.bat or run_headless.bat, then
+run.bat               # with GUI
+run_headless.bat      # headless
 ```
 
 ---
